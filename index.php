@@ -19,44 +19,82 @@ require_once 'database.php';
 		<div class="container">
 			<div>
 				<h1>How lucky is your name today?</h1>
-				<form method="POST" action="">
-					<label>Please enter your name to get your daily luck:<br>
-						<input type="text" name="name" placeholder="Enter your name" required />
-					</label>
-					<button type="submit">Submit</button>
-				</form>
-				<?php
-				if ($_POST['name'] ?? false) {
-					echo "Welcome, " . $_POST['name'] . "!";
-					postName($_POST['name']);
-				}
-				?>
+				<div style='margin-left: 2rem;'>
+
+					<form method="POST" action="">
+						<label>Please enter your name to get your daily luck:<br>
+							<input type="text" name="name" maxlength="20" placeholder="Enter your name" required />
+						</label>
+						<button type="submit">Submit</button>
+					</form>
+					<?php
+					if ($_POST['name'] ?? false) {
+						echo "Welcome, " . $_POST['name'] . "!";
+						postName($_POST['name']);
+					}
+					?>
+				</div>
 				<h1>Today's luckiest name</h1>
-				<?php
-				$luckiest = getLuckiestUser();
-				if ($luckiest) {
-					echo "<p>Luckiest today person is " . $luckiest['name'] .
-						" with a luck of " . $luckiest['luck'] . "!</p>";
-				} else {
-					echo "<p>No fortunes told yet - you could be the first!</p>";
-				}
-				?>
-				<?php
-				$averageLuck = getAverageLuck();
-				if ($averageLuck) {
-					echo "<p>Average luck today is " . round($averageLuck, 2) . ".</p>";
-				}
-				?>
+				<div style='margin-left: 2rem;'>
+
+					<?php
+					$luckiest = getLuckiestUser();
+					if ($luckiest) {
+						echo "<p style='margin-bottom: 0;'>It's...</p>";
+						echo "<h1 class='lucky-name'>" . $luckiest['name'] . "!</h1>";
+						echo "<p style='margin-top: 0;'>With " . $luckiest['luck'] . " luck!</p>";
+					} else {
+						echo "<p>No lucky names today yet - you could be the first!</p>";
+					}
+					?>
+					<?php
+					$averageLuck = getAverageLuck();
+					if ($averageLuck) {
+						echo "<p>Average luck today is " . round($averageLuck) . ".</p>";
+					}
+					?>
+				</div>
 			</div>
 			<div class="past-winners">
 				<h1>Recent daily luckiest names</h1>
-				<ul>
-					<li>Monday - Harold</li>
-					<li>Tuesday - Lindsey</li>
-					<li>Monday - Harold</li>
-					<li>Tuesday - Lindsey</li>
-					<li>Monday - Harold</li>
-				</ul>
+				<div style='margin-left: 2rem;'>
+					<p style='margin-bottom: 0;'>
+						On Monday, date, it was...
+					</p>
+					<h1 class='lucky-name'>
+						Harold
+					</h1>
+					<p style='margin-top: 0;'>
+						With (x) luck!
+					</p>
+					<p style='margin-bottom: 0;'>
+						On Monday, date, it was...
+					</p>
+					<h1 class='lucky-name'>
+						Harold
+					</h1>
+					<p style='margin-top: 0;'>
+						With (x) luck!
+					</p>
+					<p style='margin-bottom: 0;'>
+						On Monday, date, it was...
+					</p>
+					<h1 class='lucky-name'>
+						Harold
+					</h1>
+					<p style='margin-top: 0;'>
+						With (x) luck!
+					</p>
+					<p style='margin-bottom: 0;'>
+						On Monday, date, it was...
+					</p>
+					<h1 class='lucky-name'>
+						Harold
+					</h1>
+					<p style='margin-top: 0;'>
+						With (x) luck!
+					</p>
+				</div>
 			</div>
 		</div>
 	</div>

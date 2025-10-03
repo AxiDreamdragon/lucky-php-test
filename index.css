@@ -13,6 +13,9 @@ html {
 	}
 }
 
+h1 {
+	font-size: 3rem;
+}
 
 input {
 	border: none;
@@ -70,6 +73,7 @@ button:hover {
 .container {
 	padding: 10%;
 	display: grid;
+	gap: 3rem;
 	grid-template-columns: 50% 50%;
 	place-items: center;
 
@@ -86,7 +90,6 @@ button:hover {
 }
 
 .past-winners {
-	font-size: 24px;
 	overflow-y: scroll;
 	max-height: 100dvh;
 	box-sizing: border-box;
@@ -102,4 +105,13 @@ button:hover {
 
 .past-winners::-webkit-scrollbar {
 	display: none;
+}
+
+.lucky-name {
+	margin: 0;
+	font-size: 2.5rem;
+}
+
+.luck-paragraph {
+	margin-bottom: 0;
 }
