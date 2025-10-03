@@ -1,0 +1,105 @@
+body,
+html {
+	margin: 0;
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(rgb(15, 8, 15), rgb(20, 14, 35), rgb(25, 16, 48), rgb(66, 31, 173));
+	color: white;
+	font-family: "Instrument Sans", ui-sans-serif, system-ui, sans-serif;
+	overflow: hidden;
+
+	@media (max-width: 864px) {
+		overflow: unset;
+	}
+}
+
+
+input {
+	border: none;
+	height: 4rem;
+	padding: 0 1.5rem;
+	border-radius: 2rem;
+	font-size: 1.5rem;
+	font-weight: bold;
+	color: rgb(25, 16, 48);
+	margin-top: 1rem;
+	margin-right: 1rem;
+}
+
+button {
+	height: 4rem;
+	border-radius: 2rem;
+	border: none;
+	font-size: 1.5rem;
+	font-weight: bold;
+	padding: 0 1.5rem;
+	color: rgb(25, 16, 48);
+	transition: all .25s ease-in-out;
+	cursor: pointer;
+}
+
+button:hover {
+	background: transparent;
+	color: white;
+}
+
+
+.container-parent {
+	display: flex;
+	width: 100%;
+	height: 100%;
+	justify-content: center;
+	align-items: center;
+	flex-direction: row;
+	position: absolute;
+	animation: fade-in 1.68s ease-out;
+}
+
+@keyframes fade-in {
+	from {
+		opacity: 0;
+		top: 50px;
+	}
+
+	to {
+		opacity: 1;
+		top: 0;
+	}
+}
+
+.container {
+	padding: 10%;
+	display: grid;
+	grid-template-columns: 50% 50%;
+	place-items: center;
+
+	@media (max-width: 864px) {
+		grid-template-columns: 100%;
+		padding-bottom: 12rem;
+	}
+}
+
+.center-column {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.past-winners {
+	font-size: 24px;
+	overflow-y: scroll;
+	max-height: 100dvh;
+	box-sizing: border-box;
+
+	-webkit-overflow-scrolling: touch;
+	scrollbar-width: none;
+	-ms-overflow-style: none;
+
+	@media (max-width: 864px) {
+		overflow-y: unset;
+	}
+}
+
+.past-winners::-webkit-scrollbar {
+	display: none;
+}
