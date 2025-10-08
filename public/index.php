@@ -1,5 +1,5 @@
 <?php
-require_once 'database.php';
+require_once '../src/database.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,7 +20,6 @@ require_once 'database.php';
 			<div>
 				<h1>How lucky is your name today?</h1>
 				<div style='margin-left: 2rem;'>
-
 					<form method="POST" action="">
 						<label>Please enter your name to get your daily luck:<br>
 							<input type="text" name="name" maxlength="20" placeholder="Enter your name" required />
@@ -29,8 +28,10 @@ require_once 'database.php';
 					</form>
 					<?php
 					if ($_POST['name'] ?? false) {
-						echo "Welcome, " . $_POST['name'] . "!";
-						postName($_POST['name']);
+						$name = htmlspecialchars($_POST['name']);
+						$name = substr($name, 0, 20);
+						echo "Welcome, " . $name . "!";
+						postName($name);
 					}
 					?>
 				</div>

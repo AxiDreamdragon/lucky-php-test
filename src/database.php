@@ -1,7 +1,7 @@
 <?php
 function getDatabase()
 {
-	$pdo = new PDO('sqlite:names.db');
+	$pdo = new PDO('sqlite:../data/names.db');
 	$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	$pdo->exec("CREATE TABLE IF NOT EXISTS users (
 		id INTEGER PRIMARY KEY AUTOINCREMENT,
