@@ -37,7 +37,6 @@ require_once '../src/database.php';
 				</div>
 				<h1>Today's luckiest name</h1>
 				<div style='margin-left: 2rem;'>
-
 					<?php
 					$luckiest = getTodaysLuckiestUser();
 					if ($luckiest) {
