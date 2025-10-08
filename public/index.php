@@ -30,8 +30,8 @@ require_once '../src/database.php';
 					if ($_POST['name'] ?? false) {
 						$name = htmlspecialchars($_POST['name']);
 						$name = substr($name, 0, 20);
-						echo "Welcome, " . $name . "!";
-						postName($name);
+						$luck = postName($name);
+						echo "<p>Hello, " . $name . "! Your luck today is <b>" . $luck . "</b>.</p>";
 					}
 					?>
 				</div>
@@ -43,7 +43,7 @@ require_once '../src/database.php';
 					if ($luckiest) {
 						echo "<p style='margin-bottom: 0;'>It's...</p>";
 						echo "<h1 class='lucky-name'>" . $luckiest['name'] . "!</h1>";
-						echo "<p style='margin-top: 0;'>With " . $luckiest['luck'] . " luck!</p>";
+						echo "<p style='margin-top: 0;'>With <b>" . $luckiest['luck'] . "</b> luck!</p>";
 					} else {
 						echo "<p>No lucky names today yet - you could be the first!</p>";
 					}
@@ -51,7 +51,7 @@ require_once '../src/database.php';
 					<?php
 					$averageLuck = getTodaysAverageLuck();
 					if ($averageLuck) {
-						echo "<p>Average luck today is " . round($averageLuck) . ".</p>";
+						echo "<p>Average luck today is <b>" . round($averageLuck) . "</b>.</p>";
 					}
 					?>
 				</div>
@@ -75,7 +75,7 @@ require_once '../src/database.php';
 						echo htmlspecialchars($luckyUser['name']);
 						echo "</h1>";
 						echo "<p style='margin-top: 0; margin-bottom: 2rem;'>";
-						echo "With " . $luckyUser['luck'] . " luck!";
+						echo "With <b>" . $luckyUser['luck'] . "</b> luck!";
 						echo "</p>";
 					}
 					?>

@@ -13,13 +13,22 @@ function getDatabase()
 	return $pdo;
 }
 
+//returns luck
 function postName($name)
 {
 	$pdo = getDatabase();
+	$stmt = $pdo->prepare("SELECT name, luck FROM users WHERE name = ? AND date(created_at) = date('now')");
+	$stmt->execute([$name]);
+	$existingEntry = $stmt->fetch(PDO::FETCH_ASSOC);
+
+	if ($existingEntry) {
+		return $existingEntry['luck'];
+	}
+
 	$luck = random_int(0, 100);
 	$stmt = $pdo->prepare("INSERT INTO users (name, luck) VALUES (?, ?)");
 	$stmt->execute([$name, $luck]);
-	return ['name' => $name, 'luck' => $luck];
+	return $luck;
 }
 
 function getTodaysLuckiestUser()
