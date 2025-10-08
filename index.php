@@ -1,5 +1,5 @@
 <?php
-require_once '../src/database.php';
+require_once './src/database.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
