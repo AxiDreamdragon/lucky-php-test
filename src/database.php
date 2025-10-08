@@ -40,6 +40,6 @@ function getTodaysAverageLuck()
 function getRecentLuckiestUsers()
 {
 	$pdo = getDatabase();
-	$stmt = $pdo->query("SELECT name, MAX(luck) AS luck, date(created_at) AS date FROM users GROUP BY date(created_at) ORDER BY created_at DESC LIMIT 5");
+	$stmt = $pdo->query("SELECT name, MAX(luck) AS luck, date(created_at) AS date FROM users GROUP BY date(created_at) ORDER BY created_at DESC LIMIT 6");
 	return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }

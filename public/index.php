@@ -61,6 +61,8 @@ require_once '../src/database.php';
 				<div style='margin-left: 2rem;'>
 					<?php
 					$recentLuckiestUsers = getRecentLuckiestUsers();
+					//Skip first entry, as it already gets displayed at Today's luckiest name
+					$recentLuckiestUsers = array_slice($recentLuckiestUsers, 1);
 
 					foreach ($recentLuckiestUsers as $luckyUser) {
 						$date = new DateTime($luckyUser['date']);
