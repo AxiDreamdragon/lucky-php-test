@@ -21,17 +21,17 @@ function postName($name)
 	return $stmt->execute([$name, $luck]);
 }
 
-function getLuckiestUser()
+function getTodaysLuckiestUser()
 {
 	$pdo = getDatabase();
-	$stmt = $pdo->query("SELECT name, luck FROM users ORDER BY luck DESC LIMIT 1");
+	$stmt = $pdo->query("SELECT name, luck FROM users WHERE date(created_at) = date('now') ORDER BY luck DESC LIMIT 1");
 	return $stmt->fetch(PDO::FETCH_ASSOC);
 }
 
-function getAverageLuck()
+function getTodaysAverageLuck()
 {
 	$pdo = getDatabase();
-	$stmt = $pdo->query("SELECT AVG(luck) AS average_luck FROM users");
+	$stmt = $pdo->query("SELECT AVG(luck) AS average_luck FROM users WHERE date(created_at) = date('now')");
 	$result = $stmt->fetch(PDO::FETCH_ASSOC);
 	return $result ? $result['average_luck'] : null;
 }

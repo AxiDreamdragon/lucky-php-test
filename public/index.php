@@ -39,7 +39,7 @@ require_once '../src/database.php';
 				<div style='margin-left: 2rem;'>
 
 					<?php
-					$luckiest = getLuckiestUser();
+					$luckiest = getTodaysLuckiestUser();
 					if ($luckiest) {
 						echo "<p style='margin-bottom: 0;'>It's...</p>";
 						echo "<h1 class='lucky-name'>" . $luckiest['name'] . "!</h1>";
@@ -49,7 +49,7 @@ require_once '../src/database.php';
 					}
 					?>
 					<?php
-					$averageLuck = getAverageLuck();
+					$averageLuck = getTodaysAverageLuck();
 					if ($averageLuck) {
 						echo "<p>Average luck today is " . round($averageLuck) . ".</p>";
 					}
