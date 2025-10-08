@@ -18,7 +18,8 @@ function postName($name)
 	$pdo = getDatabase();
 	$luck = random_int(0, 100);
 	$stmt = $pdo->prepare("INSERT INTO users (name, luck) VALUES (?, ?)");
-	return $stmt->execute([$name, $luck]);
+	$stmt->execute([$name, $luck]);
+	return ['name' => $name, 'luck' => $luck];
 }
 
 function getTodaysLuckiestUser()
@@ -34,4 +35,11 @@ function getTodaysAverageLuck()
 	$stmt = $pdo->query("SELECT AVG(luck) AS average_luck FROM users WHERE date(created_at) = date('now')");
 	$result = $stmt->fetch(PDO::FETCH_ASSOC);
 	return $result ? $result['average_luck'] : null;
+}
+
+function getRecentLuckiestUsers()
+{
+	$pdo = getDatabase();
+	$stmt = $pdo->query("SELECT name, MAX(luck) AS luck, date(created_at) AS date FROM users GROUP BY date(created_at) ORDER BY created_at DESC LIMIT 5");
+	return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }

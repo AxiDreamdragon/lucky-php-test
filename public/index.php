@@ -59,42 +59,24 @@ require_once '../src/database.php';
 			<div class="past-winners">
 				<h1>Recent daily luckiest names</h1>
 				<div style='margin-left: 2rem;'>
-					<p style='margin-bottom: 0;'>
-						On Monday, date, it was...
-					</p>
-					<h1 class='lucky-name'>
-						Harold
-					</h1>
-					<p style='margin-top: 0;'>
-						With (x) luck!
-					</p>
-					<p style='margin-bottom: 0;'>
-						On Monday, date, it was...
-					</p>
-					<h1 class='lucky-name'>
-						Harold
-					</h1>
-					<p style='margin-top: 0;'>
-						With (x) luck!
-					</p>
-					<p style='margin-bottom: 0;'>
-						On Monday, date, it was...
-					</p>
-					<h1 class='lucky-name'>
-						Harold
-					</h1>
-					<p style='margin-top: 0;'>
-						With (x) luck!
-					</p>
-					<p style='margin-bottom: 0;'>
-						On Monday, date, it was...
-					</p>
-					<h1 class='lucky-name'>
-						Harold
-					</h1>
-					<p style='margin-top: 0;'>
-						With (x) luck!
-					</p>
+					<?php
+					$recentLuckiestUsers = getRecentLuckiestUsers();
+
+					foreach ($recentLuckiestUsers as $luckyUser) {
+						$date = new DateTime($luckyUser['date']);
+						$formattedDate = $date->format('l, jS \o\f F Y');
+
+						echo "<p style='margin-bottom: 0;'>";
+						echo "On " . $formattedDate . " it was...";
+						echo "</p>";
+						echo "<h1 class='lucky-name'>";
+						echo htmlspecialchars($luckyUser['name']);
+						echo "</h1>";
+						echo "<p style='margin-top: 0; margin-bottom: 2rem;'>";
+						echo "With " . $luckyUser['luck'] . " luck!";
+						echo "</p>";
+					}
+					?>
 				</div>
 			</div>
 		</div>
